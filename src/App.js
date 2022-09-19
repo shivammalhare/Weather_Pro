@@ -10,22 +10,57 @@ function App() {
 
   const  [weather, setWeather] = useState(null);
   const [units, setUnits] = useState('imperial'); // metric or imperial
+  const [city, setCity] = useState('Pune');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [bg, setBg] = useState(hotBg);
+  
 
   useEffect(() => {
     
     const fetchWeatherData = async () => {
-    const data = await getFormattedWeatherData('paris',units);
+    const data = await getFormattedWeatherData(city,units);
 
     setWeather(data);
      
+    
+    //dynamic Background Image
+      
+    if(data.temp>20){
+      setBg(hotBg);
+    }
+    else{
+      setBg(coldBg);
+    }
+
     };
     fetchWeatherData();
-  }, [])
+  }, [units, city]);
+
+
+  const handleUnitsClick = (e) => {
+    const button = e.currentTarget;
+    const currentUnit = button.innerText.slice(1);
+
+    const isCelsius = currentUnit === "C";
+    button.innerText = isCelsius ? "°F" : "°C";
+    setUnits(isCelsius ? "metric" : "imperial");
+  };
+
+  const enterKeyPressed = (e) => {
+    if (e.keyCode === 13) {
+      setCity(e.currentTarget.value);
+      e.currentTarget.blur();
+    }
+
+
+  };
+  
   
   
   
     return (
-    <div className="app" style={{backgroundImage:`url(${coldBg})`}} >
+    <div className="app" style={{backgroundImage:`url(${bg})`}} >
      
 
      <div className="overlay">
@@ -35,8 +70,8 @@ function App() {
           <div className="section section__inputs">
             
             
-            <input type="text" placeholder="Enter City....." />
-            <button>°F</button>
+            <input onKeyDown = {enterKeyPressed} type="text" placeholder="Enter City....." />
+            <button onClick = {(e) => handleUnitsClick(e)}>°C</button>
           
             </div>
 
