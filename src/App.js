@@ -26,12 +26,23 @@ function App() {
     
     //dynamic Background Image
       
-    if(data.temp>20){
-      setBg(hotBg);
-    }
-    else{
-      setBg(coldBg);
-    }
+    const threshold = units === "metric" ? 20 : 60;
+      if (data.temp <= threshold) setBg(coldBg);
+      else setBg(hotBg);
+
+      //dynamic  description according to temperature
+      
+      const desc = document.querySelector(".description");
+      if (data.temp <= threshold)
+
+
+        desc.innerHTML = "It's cold outside, wear warm clothes";
+      else 
+        desc.innerHTML = "It's Sunny Weather, Have a nice day!!";
+        
+     
+
+      
 
     };
     fetchWeatherData();
@@ -85,10 +96,14 @@ function App() {
 
 
               <div className="temperature">
-                <h1>{`${weather.temp.toFixed()} °${units=== 'metric' ? "C" : "F"}`}</h1>  
-                <h3>Feeling Cold...</h3> 
-              </div>
-
+                <h1>{`${weather.temp.toFixed()} °${units=== 'metric' ? "C" : "F"}`}</h1> 
+                
+                
+            
+                <h3 className="description"></h3>
+              </div> 
+              
+             
           </div>
 
           <Descriptions  weather={weather} units={units}/>  
