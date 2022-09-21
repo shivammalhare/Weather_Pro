@@ -3,6 +3,10 @@ YOU CAN PREVIEW THIS WEATHER APPLICATION ON THE lINK BELOW
 https://pro-weather-app.herokuapp.com/
 
 
+![weather](https://user-images.githubusercontent.com/75319662/191481256-960ed36e-b9af-4253-b78a-3e86338be778.png)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
