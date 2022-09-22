@@ -123,3 +123,34 @@
   
 }
 
+.footer {
+  display: flex;
+  padding: 0.4rem 1rem;
+
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--section-overlay);
+
+}
+.footer p {
+  font-size: 15px;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+ 
+}
+.social>a {
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+.social>a:hover {
+  color: lightgray;
+}

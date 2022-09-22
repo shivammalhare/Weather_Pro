@@ -4,6 +4,9 @@ import Descriptions from './components/Descriptions';
 
 import {getFormattedWeatherData} from "./weatherService";
 import { useEffect, useState } from "react";
+import {FaGithub} from 'react-icons/fa';
+import {FaLinkedin} from 'react-icons/fa';
+import {FaInstagram} from 'react-icons/fa';
 
  
 function App() {
@@ -103,10 +106,21 @@ function App() {
                 <h3 className="description"></h3>
               </div> 
               
+              
              
           </div>
 
           <Descriptions  weather={weather} units={units}/>  
+
+          <div className=" section footer">
+          <p>Made with ❤️ by Shivam </p>
+              <div className="social">
+              <a href="https://github.com/shivammalhare"><FaGithub/></a>
+              <a href="https://www.linkedin.com/in/shivam-malhare-0b1b1b1b9/"><FaLinkedin/></a>
+              <a href="https://www.instagram.com/shivam.malhare/"><FaInstagram/></a>
+              </div>
+            
+            </div>
        </div>
 
 
@@ -115,6 +129,7 @@ function App() {
       }
           
      </div>
+     
       </div>
    ); 
 }
